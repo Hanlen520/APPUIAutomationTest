@@ -1,0 +1,9 @@
+pytest==3.5.0
+allure-pytest==2.4.1
+selenium==3.14.0
+Appium-Python-Client==0.28
+assertpy==0.13
+PyMySQL==0.8.0
+redis==2.10.6
+cx_Oracle==6.3.1
+paramiko==2.4.0
