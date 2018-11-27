@@ -1,4 +1,7 @@
+![avatar](https://github.com/yanchunhuo/resources/blob/master/APPUIAutomationTest/APPUIAutomationTest.png)
+
 # [APP UI自动化测试]()
+
 # [概况]()
 * 本项目采用UI MAP和Page Object设计模式
 * 本项目由pytest、assertpy、selenium、appium、PyMySQL、allure、redis的python模块组成
@@ -151,3 +154,6 @@
 * 如需要上传文件到手机或者从手机下载文件，请确保有手机对应目录的读写权限
 * 视频录制统一对单个单个case进行，保证录制时间不超过3分钟，且录制文件不要过大，否则会引起手机内存无法存储视频
 * 设备屏幕坐标系原点都在最左上角，往右x轴递增，往下y轴递增
+
+# [打赏]()
+![avatar](https://github.com/yanchunhuo/resources/blob/master/Alipay.jpg)
