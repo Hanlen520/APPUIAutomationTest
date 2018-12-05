@@ -8,6 +8,7 @@ from common.httpclient.doRequest import DoRequest
 from page_objects.locator_type import Locator_Type
 from page_objects.wait_type import Wait_Type  as Wait_By
 from pojo.elementInfo import ElementInfo
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
@@ -271,7 +272,7 @@ class AppOperator:
         """
         if isinstance(element, ElementInfo):
             # 由于表格定位经常会出现【StaleElementReferenceException: Message: stale element reference: element is not attached to the page document 】异常错误,
-            # 解决此异常只需要用显示等待，保证元素存在即可，显示等待类型中VISIBILITY_OF有实现StaleElementReferenceException异常捕获,
+            # 解决此异常只需要用显示等待，保证元素存在即可，显示等待类型中visibility_of_all_elements_located有实现StaleElementReferenceException异常捕获,
             # 所以强制设置表格定位元素时使用VISIBILITY_OF
             element.wait_type=Wait_By.VISIBILITY_OF
             webElement = self.getElement(element)
@@ -279,20 +280,21 @@ class AppOperator:
             webElement = element
         else:
             return None
+        table_data = []
         table_trs = webElement.find_elements_by_tag_name('tr')
-        table_data=[]
-        for tr in table_trs:
-            tr_data=[]
-            # 此处同样用于解决StaleElementReferenceException异常问题
-            WebDriverWait(self._driver,30).until(expected_conditions.visibility_of(tr))
-            tr_tds = tr.find_elements_by_tag_name('td')
-            if data_type.lower()=='text':
-                for td in tr_tds:
-                    tr_data.append(td.text.encode('utf-8'))
-            elif data_type.lower()=='html':
-                for td in tr_tds:
-                    tr_data.append(td.get_attribute('innerHTML'))
-            table_data.append(tr_data)
+        try:
+            for tr in table_trs:
+                tr_data=[]
+                tr_tds = tr.find_elements_by_tag_name('td')
+                if data_type.lower()=='text':
+                    for td in tr_tds:
+                        tr_data.append(td.text.encode('utf-8'))
+                elif data_type.lower()=='html':
+                    for td in tr_tds:
+                        tr_data.append(td.get_attribute('innerHTML'))
+                table_data.append(tr_data)
+        except StaleElementReferenceException, e:
+                print '获取表格内容异常:' + e.message
         return table_data
 
     def get_window_size(self):
