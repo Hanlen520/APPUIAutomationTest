@@ -9,6 +9,8 @@ class MysqlClient:
 
     def executeSQL(self,sql):
         # try:
+        # 为了避免连接被服务器关闭,检测进行重连
+        self._conn.ping(reconnect=True)
         self._cursor.execute(sql)
         result=self._cursor.fetchall()
         self._conn.commit()
@@ -23,6 +25,8 @@ class MysqlClient:
         :return:
         """
         # try:
+        # 为了避免连接被服务器关闭,检测进行重连
+        self._conn.ping(reconnect=True)
         num=len(values)
         n=0
         while n<num:
