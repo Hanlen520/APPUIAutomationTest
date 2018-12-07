@@ -64,6 +64,11 @@ class AppOperator:
         if webElement:
             webElement.click()
 
+    def submit(self,element):
+        webElement=self._change_element_to_webElement_type(element)
+        if webElement:
+            webElement.submit()
+
     def sendText(self,element,text):
         text=text.decode('utf-8')
         webElement=self._change_element_to_webElement_type(element)
