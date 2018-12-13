@@ -68,7 +68,7 @@ class StrTool:
         return result
 
     @classmethod
-    def addFix(self,sourceStr,isPre=False,preStr='',isSuffix=False,suffixStr=''):
+    def addFix(cls, sourceStr, isPre=False, preStr='', isSuffix=False, suffixStr=''):
         """
         字符串加前后缀
         :param sourceStr:

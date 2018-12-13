@@ -1,5 +1,6 @@
 pytest==3.5.0
 allure-pytest==2.4.1
+requests==2.18.4
 selenium==3.14.0
 Appium-Python-Client==0.28
 assertpy==0.13

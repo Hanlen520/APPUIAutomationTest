@@ -1,6 +1,6 @@
 #-*- coding:utf8 -*-
 
-class DemoProjectInit():
+class DemoProjectInit:
     def __init__(self):
         pass
 
