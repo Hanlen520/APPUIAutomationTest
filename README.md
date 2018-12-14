@@ -61,7 +61,7 @@
         * 配置中文编码,环境变量创建NLS_LANG=SIMPLIFIED CHINESE_CHINA.UTF8  
     * 注意:如果使用64位,python和instantclient都需要使用64位
 
-### 1.5、图像识别字库准备
+#### 1.5、图像识别字库准备
 * 下载对应字库:https://github.com/tesseract-ocr/tessdata
 * 将下载的字库放到common/java/lib/tess4j/tessdata/
  
