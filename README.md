@@ -4,13 +4,15 @@
 
 # [概况]()
 * 本项目采用UI MAP和Page Object设计模式
-* 本项目由pytest、assertpy、selenium、appium、PyMySQL、allure、redis的python模块组成
+* 本项目由pytest、assertpy、selenium、appium、PyMySQL、allure、redis、JPype1、Pillow的python模块组成
     * pytest是python的一个单元测试框架,https://docs.pytest.org/en/latest/
     * assertpy是一个包含丰富的断言库,支持pytest,https://github.com/ActivisionGameScience/assertpy
     * selenium是ui自动化测试框架,https://www.seleniumhq.org/
     * appium是移动端的自动化测试框架,https://github.com/appium/appium/tree/v1.9.1
     * PyMySQL用于操作MySQL数据库,https://github.com/PyMySQL/PyMySQL
     * allure用于生成测试报告,http://allure.qatools.ru/
+    * JPype1用于执行java代码,https://github.com/jpype-project/jpype
+    * Pillow用于图片处理,https://pillow.readthedocs.io/en/latest/
 
 # [使用]()
 ## 一、环境准备
@@ -58,7 +60,11 @@
         * 系统环境变量加入D:\instantclient-basic-windows.x64-11.2.0.4.0\instantclient_11_2
         * 配置中文编码,环境变量创建NLS_LANG=SIMPLIFIED CHINESE_CHINA.UTF8  
     * 注意:如果使用64位,python和instantclient都需要使用64位
-    
+
+### 1.5、图像识别字库准备
+* 下载对应字库:https://github.com/tesseract-ocr/tessdata
+* 将下载的字库放到common/java/lib/tess4j/tessdata/
+ 
 ### 2、appium server运行环境准备
 ### 2.1、安装jdk1.8,并配置环境变量
 * export JAVA_HOME=/usr/lib/jvm/jdk8
