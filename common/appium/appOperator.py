@@ -301,7 +301,7 @@ class AppOperator:
         """
         以二维数组返回表格每一行的每一列的数据[[row1][row2][colume1,clume2]]
         :param element:
-        :param data_type: text-返回表格文本内容,html-返回表格html内容
+        :param data_type: text-返回表格文本内容,html-返回表格html内容,webElement-返回表格元素
         :return:
         """
         if isinstance(element, ElementInfo):
@@ -326,6 +326,8 @@ class AppOperator:
                 elif data_type.lower()=='html':
                     for td in tr_tds:
                         tr_data.append(td.get_attribute('innerHTML'))
+                elif data_type.lower()=='webelement':
+                    tr_data=tr_tds
                 table_data.append(tr_data)
         except StaleElementReferenceException, e:
                 print '获取表格内容异常:' + e.message
